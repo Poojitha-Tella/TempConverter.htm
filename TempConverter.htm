@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+
+        <title>Temperature Converter</title>
+        <style>
+            h1{
+                width:100px;
+                padding:50px;
+                margin-left:250px;
+                box-sizing:border-box;
+                font-size:50px;
+                font-family:cursive;
+            }
+            body{
+                background-size:cover;
+                background-position:scroll;
+                background-image:url("temp.htm");
+                background-repeat:no-repeat;
+            }
+            .ex{
+                font-size:30px;
+                margin-left:400px;
+            }
+            .ex1{
+                font-size:30px;
+                margin-left:400px;
+                padding:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Temperature Converter</h1>
+        <div class="convertor">
+            <div class="ex">
+                <label>Celsius(&deg;C)</label><br>
+                <input type="number" placeholder="Celsius" id="celsius"><br>
+                <label>Farenheit(&deg;F)</label><br>
+                <input type="number" placeholder="Farenheit" id="farenheit"><br>
+                <label>Kelvin(&deg;K)</label><br>
+                <input type="number" placeholder="Kelvin" id="kelvin"><br>
+            </div>
+        </div>
+        <div class="ex1">
+        <button onclick="Temp_convert()">Convert</button>
+        </div>
+        <script>
+            temp=document.getElementById('Temperature');
+            celsius=document.getElementById('celsius');
+            farenheit=document.getElementById('farenheit');
+            kelvin=document.getElementById('kelvin');
+            function Temp_convert(){
+                farenheit.oninput= function(){
+                    C=((parseFloat(farenheit.value)-32)*5)/9;
+                    celsius.value=parseFloat(C.toFixed(2));
+                    K=(parseFloat(farenheit.value)-32)*5/9+273.15;
+                    kelvin.value=parseFloat(K.toFixed(2));
+                }
+                celsius.oninput=function(){
+                    F=(parseFloat(celsius.value)*9)/5+32;
+                    farenheit.value=parseFloat(F.toFixed(1));
+                    K=(parseFloat(celsius.value)+273.15);
+                    kelvin.value=parseFloat(K.toFixed(2));
+                }
+                kelvin.oninput= function() {
+                    F=(parseFloat(kelvin.value)-273.15)*9/5+32;
+                    farenheit.value=parseFloat(F.toFixed(2));
+                    C=(parseFloat(kelvin.value)-273.15);
+                    celsius.value=parseFloat(C.toFixed(2));
+                }
+            }
+        </script>
+    </body>
+</html>
